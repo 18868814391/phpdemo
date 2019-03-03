@@ -16,6 +16,8 @@
 qweqweqweqweqw''''""""""e
 qq;
     echo $ccc;
-
+    define('SYF','沈怡帆');
+    echo SYF;
+    echo __file__;
 
 ?>
