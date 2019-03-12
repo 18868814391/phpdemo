@@ -68,12 +68,18 @@
 //imagettftext($img,14,rand(-30,30),rand(30,50),25,$colorString,'font/Helvetica Bold Oblique.ttf',$code);
 //imagejpeg($img);
 //imagedestroy($img);
-echo 123;
-$servername = "localhost";
-$username = "root";
-$password = "";
-$conn = mysqli_connect($servername, $username, $password);
-if (!$conn) {
-    die("连接失败: " . mysqli_connect_error());
-}
+//echo 123;
+//$servername = "localhost";
+//$username = "root";
+//$password = "";
+//$conn = mysqli_connect($servername, $username, $password);
+//if (!$conn) {
+//    die("连接失败: " . mysqli_connect_error());
+//}
+//var_dump(file_exists('index.php'));
+//var_dump(filesize('index.php'));
+$file=fopen('aaaa.txt','r');
+$data=fread($file,8);
+var_dump(iconv('gbk', 'utf-8', $data));
+//var_dump(fread($file,5));
 ?>
