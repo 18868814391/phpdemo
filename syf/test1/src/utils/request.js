@@ -10,12 +10,12 @@ if (process.env.NODE_ENV == 'development') { //测试用
   //https://merchant-api-f.netmi.com.cn
   //https://merchant-api-test.netmi.com.cn
   //window.location.origin
-  // axios.defaults.baseURL = 'http://lantian-api-test.netmi.com.cn';
+  // axios.defaults.baseURL = 'http://localhost/phpdemo/syf/php';
 }else{
   axios.defaults.baseURL = window.location.origin;
 }
 const service = axios.create({
-  timeout: 10000 // 请求超时时间
+  timeout: 10000, // 请求超时时间
 })
 
 // request拦截器

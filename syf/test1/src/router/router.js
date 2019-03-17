@@ -17,10 +17,6 @@ Vue.use(Router);
 // })
 
 const routes = [
-  // {
-  //   path: '*',
-  //   redirect: '/index',
-  // },
   {
     path: '/login',
     name: 'login',
@@ -29,6 +25,14 @@ const routes = [
       title: '登录'
     }
   },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/view/login/register'),
+    meta: {
+      title: '注册'
+    }
+  },  
 ];
 
 const router=new Router({

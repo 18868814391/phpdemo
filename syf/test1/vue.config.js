@@ -1,10 +1,10 @@
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
-  // devServer: {
-  //   // http://lantian-api.lanland.vip
-  //   // http://lantian-home-test.netmi.com.cn
-  //   proxy: 'http://lantian-home-test.netmi.com.cn'  /netmi-shop-h5/dist/
-  // },
+  devServer: {
+    // http://lantian-api.lanland.vip
+    // http://lantian-home-test.netmi.com.cn  /netmi-shop-h5/dist/
+    proxy: 'http://localhost/phpdemo/syf/php'  
+  },
   outputDir: 'dist',
   baseUrl: process.env.NODE_ENV === 'production' ? './' : './',
   // css: {
