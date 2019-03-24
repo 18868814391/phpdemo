@@ -18,6 +18,10 @@ Vue.use(Router);
 
 const routes = [
   {
+    path: '*',
+    redirect: '/index'
+  },  
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/view/login'),
@@ -32,7 +36,31 @@ const routes = [
     meta: {
       title: '注册'
     }
-  },  
+  },
+  {
+    path: '/index',
+    name: 'index',
+    component: () => import('@/view/index'),
+    meta: {
+      title: 'syf'
+    }
+  },
+  {
+    path: '/upLoad',
+    name: 'upLoad',
+    component: () => import('@/view/index/upLoad'),
+    meta: {
+      title: '上传'
+    }
+  }, 
+  {
+    path: '/read',
+    name: 'read',
+    component: () => import('@/view/index/read'),
+    meta: {
+      title: '浏览'
+    }
+  },    
 ];
 
 const router=new Router({

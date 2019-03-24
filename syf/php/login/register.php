@@ -8,37 +8,49 @@ $connect=mysql_connect('localhost','root','');
 if(!$connect){
    die('数据库连接失败'.mysql_error());
 }else{
-  echo '数据库连接成功';
+//  echo '数据库连接成功';
 }
 mysql_select_db('syf');
 mysql_query('SET NAMES UTF8');
 
-var_dump($GLOBALS['HTTP_RAW_POST_DATA']);
-var_dump($_POST);
+//var_dump($GLOBALS['HTTP_RAW_POST_DATA']);
+//var_dump($_POST);
 $command =  isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
 $j =json_decode( $command,true);//true,转化成数组
-var_dump($j['admin']);
+//var_dump($j['admin']);
 $admin=$j['admin'];
 // if(isset($_POST['phone'])||isset($_POST['submit'])){
 //    $phone=$_POST['phone'];
 // }else{exit('非法操作');}
 
-$search=mysql_query("select * from user where admin='$admin'");
+$search=mysql_query("select * from user where adm='$admin'");
 
 if(mysql_fetch_array($search)){
-   echo '用户重名';
+//   echo '用户重名';
+ $arr = array (
+     'errcode'=>99,
+     'errmsg'=>urlencode('用户名重名')
+ );
+ echo urldecode(json_encode($arr));
+ die();
 }else{
-   echo '用户不重名';
+//   echo '用户不重名';
 };
 
 $adm=$j['admin'];
 $code=$j['code'];
 $Thename=$j['Thename'];
 
-mysql_query("INSERT INTO user (adm,code,Thename) 
-VALUES ('$adm','$code', '$Thename')");
+mysql_query("INSERT INTO user (adm,code,Thename) VALUES ('$adm','$code', '$Thename')");
 
-echo "<script>alert('注册成功！请登录')</script>";
-   // header('location:http://localhost/conversetest/converse/src/html/');
+$arr = array (
+    'errcode'=>0,
+    'errmsg'=>urlencode('注册成功'),
+    'data'=>array(
+        'adm'=>$adm,
+        'Thename'=>$Thename
+    )
+);
+echo urldecode(json_encode($arr));
 
 ?>
