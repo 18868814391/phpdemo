@@ -1,0 +1,10 @@
+stages:
+  - master_deploy
+master_deploy:
+  stage: master_deploy
+  script:
+    - ssh -tt kshu@101.37.118.144 "cd /var/www/html/01/merchant/merchant/web/netmi-shop-h5 && git -c diff.mnemonicprefix=false -c core.quotepath=false fetch origin && git -c diff.mnemonicprefix=false -c core.quotepath=false pull --no-commit origin master"
+  only:
+    - master
+  tags:
+    - web

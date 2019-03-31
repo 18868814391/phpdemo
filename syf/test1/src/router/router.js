@@ -60,7 +60,23 @@ const routes = [
     meta: {
       title: '浏览'
     }
-  },    
+  }, 
+  {
+    path: '/readPage',
+    name: 'readPage',
+    component: () => import('@/view/index/readPage'),
+    meta: {
+      title: '浏览'
+    }
+  },  
+  {
+    path: '/readPage2',
+    name: 'readPage2',
+    component: () => import('@/view/index/readPage2'),
+    meta: {
+      title: '浏览'
+    }
+  },   
 ];
 
 const router=new Router({
