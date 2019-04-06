@@ -6,3 +6,5 @@ export function UploadTxt(params) { return request({ url: '/upload/fileUpload.ph
 export function UploadRichTxt(params) { return request({ url: '/upload/richTxtUpload.php', method: 'post', data: params }) }// 富文本上传
 export function lightNovelList(params) { return request({ url: '/novel/lightNovelList.php', method: 'post', data: params }) }// 获取轻小说列表
 export function getlightNovel(params) { return request({ url: '/novel/getNovel.php', method: 'post', data: params }) }// 获取轻小说内容
+export function getheavyNovel(params) { return request({ url: '/novel/heavyNovelList.php', method: 'post', data: params }) }// 获取重小说章节
+export function getMircleDetail(params) { return request({ url: '/novel/mircleDetail.php', method: 'post', data: params }) }// 获取重小说内容

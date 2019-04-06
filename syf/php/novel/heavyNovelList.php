@@ -11,16 +11,34 @@ $arr=array();
 //echo ($result);
 for($i=0;$i<mysql_num_rows($result);$i++){
     $row=mysql_fetch_array($result,MYSQLI_ASSOC);
-    if(urlencode($row['chapterTitle'])!=$arr[$i-1]['chapterTitle']){
-        $arr[$i]=array(
-            'chapterTitle'=>urlencode($row['chapterTitle']),
-        );
+    if($i>0){
+        if(urlencode($row['chapterTitle'])!=$arr[count($arr)-1]){
+            array_push($arr,urlencode($row['chapterTitle']));
+        }
+    }else{
+        array_push($arr,urlencode($row['chapterTitle']));
     }
 }
-$arr2 = array (
+$arrTwice=array();
+for($k=0;$k<count($arr);$k++){
+    $tit=urldecode($arr[$k]);
+//    var_dump($tit);
+    $arrTwice[$tit]=array();
+//    var_dump($arrTwice);
+//    die();
+
+    $result=mysql_query("select * from heavynovel where chapterTitle='$tit'");
+    for($j=0;$j<mysql_num_rows($result);$j++){
+        $row=mysql_fetch_array($result,MYSQLI_ASSOC);
+        array_push($arrTwice[$tit],urlencode($row['paragraphTitle']));
+    }
+}
+//var_dump($arrTwice);
+//echo $arrTwice;
+$ar = array (
     'errcode'=>0,
     'errmsg'=>urlencode('获取成功'),
-    'data'=>$arr
+    'data'=>$arrTwice
 );
-echo urldecode(json_encode($arr2));
+echo urldecode(json_encode($ar));
 ?>

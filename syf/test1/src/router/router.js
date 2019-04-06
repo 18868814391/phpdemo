@@ -76,7 +76,15 @@ const routes = [
     meta: {
       title: '浏览'
     }
-  },   
+  },
+  {
+    path: '/readPage3',
+    name: 'readPage3',
+    component: () => import('@/view/index/readPage3'),
+    meta: {
+      title: '浏览'
+    }
+  },    
 ];
 
 const router=new Router({
