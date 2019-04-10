@@ -11,8 +11,9 @@ if (process.env.NODE_ENV == 'development') { //测试用
   //https://merchant-api-test.netmi.com.cn
   //window.location.origin
   // axios.defaults.baseURL = 'http://localhost/phpdemo/syf/php';
+  //http://118.31.62.251/syf/php
 }else{
-  axios.defaults.baseURL = window.location.origin;
+  axios.defaults.baseURL = 'http://118.31.62.251/syf/php';
 }
 const service = axios.create({
   timeout: 10000, // 请求超时时间

@@ -3,7 +3,8 @@ module.exports = {
   devServer: {
     // http://lantian-api.lanland.vip
     // http://lantian-home-test.netmi.com.cn  /netmi-shop-h5/dist/
-    proxy: 'http://localhost/phpdemo/syf/php'  
+    //http://118.31.62.251/syf/php
+    proxy: 'http://118.31.62.251/syf/php'  
   },
   outputDir: 'dist',
   baseUrl: process.env.NODE_ENV === 'production' ? './' : './',

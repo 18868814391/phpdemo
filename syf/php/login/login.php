@@ -1,22 +1,21 @@
 <?php
 header('content-type:text/html;charset=utf-8');
-$connect=mysql_connect('localhost','root','');
+$connect =new mysqli(‘localhost’, ‘root’, ‘syf’,’syf’);
 if(!$connect){
-    die('数据库连接失败'.mysql_error());
+    die('数据库连接失败'.mysqli_error());
 }
-mysql_select_db('syf');
-mysql_query('SET NAMES UTF8');
+mysqli_query('SET NAMES UTF8');
 
 $command =  isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
 $j =json_decode( $command,true);//true,转化成数组
 $adm=$j['admin'];
 $code=$j['code'];
 
-$search=mysql_query("select * from user where adm='$adm' and code='$code'");
+$search=mysqli_query("select * from user where adm='$adm' and code='$code'");
 
-if(mysql_fetch_array($search)){
-    $result = mysql_query("SELECT * FROM user WHERE adm='$adm'");
-    $row = mysql_fetch_array($result);
+if(mysqli_fetch_array($search)){
+    $result = mysqli_query("SELECT * FROM user WHERE adm='$adm'");
+    $row = mysqli_fetch_array($result);
     $Thename=$row['Thename'];
     $arr = array (
         'errcode'=>0,
